@@ -62,6 +62,7 @@ router.post("/createOrder/:orderId", async (req, res) => {
   }
 });
 
+// 這裡會for自己的伺服器 會跳到本機
 router.get("/linePay/confirm", async (req, res) => {
   const { transactionId, orderId } = req.query;
   console.log(transactionId, orderId);
@@ -78,12 +79,13 @@ router.get("/linePay/confirm", async (req, res) => {
     const url = `${LINEPAY_SITE}/${LINEPAY_VERSION}${uri}`;
     const linePayRes = await axios.post(url, linePayBody, { headers });
     console.log(linePayRes);
-    res.end();
+    res.json(linePayRes);
   } catch (e) {
     res.end();
   }
 });
 
+// 
 function createSignature(uri, linePayBody) {
   const nonce = parseInt(new Date().getTime() / 1000); //UUID or timestamp(時間戳)
   const string = `${LINEPAY_CHANNEL_SECRET_KEY}/${LINEPAY_VERSION}${uri}${JSON.stringify(
