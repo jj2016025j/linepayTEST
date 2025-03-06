@@ -21,7 +21,7 @@ const orders = {};
 router.get("/", (req, res) => {
   res.render("orders", { orders: sampleData });
 });
-
+// http://localhost:3000/checkout/:id
 router.get("/checkout/:id", (req, res) => {
   const { id } = req.params;
   const order = sampleData[id];
