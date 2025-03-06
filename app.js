@@ -4,6 +4,6 @@ const indexRouters = require("./routes/index");
 app.set("view engine", "ejs");
 app.use("/", indexRouters);
 app.listen(3000, () => {
-  console.log("Server running on port 3000。。。");
+  console.log("Server running on http://127.0.0.1:3000。。。");
 });
 // http://localhost:3000
